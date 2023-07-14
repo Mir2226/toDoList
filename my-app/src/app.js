@@ -42,7 +42,7 @@ function App() {
     
     // Cancel update
     ///////////////////
-    const cancelUpdate = (id) => {
+    const cancelUpdate = () => {
 
     }
 
@@ -54,7 +54,7 @@ function App() {
 
      // Update task
      ////////////////
-     const updateTask = (e) => {
+     const updateTask = () => {
 
      }
     
@@ -64,6 +64,28 @@ function App() {
         <div className=" container App">
            <br></br>
            <h2>To Do List App</h2>
+           <br></br>
+
+            {/* display todo */}
+            
+            {/* // this code run when tasks absence */}
+            { toDo && toDo.length ? '' : 'No Tasks...' }
+
+            { toDo && toDo 
+                .map((task, index) => {
+                    return (
+                        <React.Fragment key={task.id}>
+                            <div className='col taskBg'>
+                                <div className={task.status ? 'done' : ''}>
+                                <span className='taskText'>{index + 1}</span>
+                                <span className='taskText'>{task.title}</span>
+                                </div>
+
+                            </div>
+                        </React.Fragment>
+                    )
+                })
+            }
         </div>
     )
 }
